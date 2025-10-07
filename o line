@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinsman De Tailors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Kinsman De Tailors</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#admin">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to Kinsman De Tailors</h2>
+            <p>Your destination for bespoke fashion tailored to perfection.</p>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>At Kinsman De Tailors, we pride ourselves on creating fashion that reflects your unique style.</p>
+        </section>
+
+        <section id="collections">
+            <h2>Our Collections</h2>
+            <div class="collection">
+                <h3>Formal Wear</h3>
+                <p>Explore our exquisite range of formal wear.</p>
+            </div>
+            <div class="collection">
+                <h3>Casual Wear</h3>
+                <p>Discover the latest trends in casual fashion.</p>
+            </div>
+            <div class="collection">
+                <h3>Accessories</h3>
+                <p>Complete your look with our stylish accessories.</p>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Video Gallery</h2>
+            <div id="video-gallery" class="video-gallery">
+                <!-- Videos will be added here via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:jasondanielmowoe2@gmail.com">jasondanielmowoe2@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/08061101735">08061101735</a></p>
+        </section>
+        <p>&copy; 2023 Kinsman De Tailors. All rights reserved.</p>
+    </footer>
+
+    <section id="admin" class="hidden">
+        <h2>Admin Panel</h2>
+        <input type="text" id="videoUrl" placeholder="Enter Video URL">
+        <button id="addVideoButton">Add Video to Gallery</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #2D3E50; /* Dark Green */
+    color: #ffffff; /* White */
+}
+
+header {
+    background: #1F2A44; /* Darker Green */
+    color: #FFD700; /* Gold */
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #FFD700; /* Gold */
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background: #35424A; /* Darker Dark Green */
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #1F2A44; /* Darker Green */
+    color: #FFD700; /* Gold */
+}
+
+.video-gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.video-gallery iframe {
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#admin {
+    margin-top: 40px;
+}
+
+section h2 {
+    margin-top: 0;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Welcome to Kinsman De Tailors!');
+    
+    const addVideoButton = document.getElementById('addVideoButton');
+    addVideoButton.addEventListener('click', addVideoToGallery);
+});
+
+function addVideoToGallery() {
+    const videoUrl = document.getElementById('videoUrl').value;
+    const videoGallery = document.getElementById('video-gallery');
+
+    if (videoUrl) {
+        const videoIframe = document.createElement('iframe');
+        videoIframe.src = videoUrl;
+        videoIframe.allow = 'autoplay; encrypted-media';
+        videoIframe.setAttribute('frameborder', '0');
+        videoIframe.setAttribute('allowfullscreen', '');
+
+        videoGallery.appendChild(videoIframe);
+        document.getElementById('videoUrl').value = ''; // Clear the input field
+    } else {
+        alert('Please enter a valid video URL.');
+    }
+}
